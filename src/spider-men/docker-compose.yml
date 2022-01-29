@@ -1,8 +1,10 @@
 version: '3.4'
 
 services:
-  spider-men:
-    image: mom
+  parker:
+    image: parker:latest
     build:
       context: .
       dockerfile: ./Dockerfile
+    ports:
+      - 5001:5000
