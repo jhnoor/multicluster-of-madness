@@ -3,12 +3,13 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: parker
+  repository: ghcr.io/jhnoor/parker
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
-imagePullSecrets: []
+imagePullSecrets: 
+  - name: gh-jhnoor
 # nameOverride: ""
 fullnameOverride: "spider-men"
 

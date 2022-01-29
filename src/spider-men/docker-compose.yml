@@ -2,9 +2,9 @@ version: '3.4'
 
 services:
   parker:
-    image: parker:latest
+    image: ghcr.io/jhnoor/parker:latest
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 5001:5000
+      - 5001:80

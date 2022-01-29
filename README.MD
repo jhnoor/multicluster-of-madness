@@ -4,7 +4,29 @@ Dr. Strange has opened up a multiverse rift, allowing countless universes in, yo
 
 The multiverse of madness must be kept sane! 
 
-## Requirements
+# Getting started
+
+## Prerequisites
+
+- Helm
+- k8s
+- k3d
+
+1. Create github PAT with `read:packages` and `write:packages` privileges and set it to `CR_PAT`
+2. Create k8s secret
+```
+kubectl create secret docker-registry gh-jhnoor \
+    --docker-server=ghcr.io \
+    --docker-username=jhnoor \
+    --docker-password=$CR_PAT \
+    --docker-email=jamawadi@gmail.com
+```
+3. Run `scripts/k3d-create-clusters.sh`
+4. Run `scripts/helm-install.sh`
+
+Happy hunting!
+
+# Mission
 - Each universe is a k8s cluster with at least 1 node
 - Universes will experience unique disasters
 - These disasters must be recovered from
