@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: ghcr.io/jhnoor/parker
+  repository: ghcr.io/jhnoor/multi-cluster-of-madness/parker
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -25,7 +25,6 @@ ingress:
   className: ""
   annotations:
     kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
   hosts:
     - host: spider-men-ingress.local
       paths:

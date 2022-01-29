@@ -13,13 +13,16 @@ The multiverse of madness must be kept sane!
 - k3d
 
 1. Create github PAT with `read:packages` and `write:packages` privileges and set it to `CR_PAT`
-2. Create k8s secret
+2. Create k8s secret in `.secrets/create-secret.sh`
 ```
+CR_PAT=<MY_TOKEN>
+
 kubectl create secret docker-registry gh-jhnoor \
     --docker-server=ghcr.io \
     --docker-username=jhnoor \
     --docker-password=$CR_PAT \
     --docker-email=jamawadi@gmail.com
+
 ```
 3. Run `scripts/k3d-create-clusters.sh`
 4. Run `scripts/helm-install.sh`

@@ -2,9 +2,9 @@ version: '3.4'
 
 services:
   parker:
-    image: ghcr.io/jhnoor/parker:latest
+    image: ghcr.io/jhnoor/multi-cluster-of-madness/parker:latest
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 5001:80
+      - 5000:5000
