@@ -1,1 +1,7 @@
 # Default values for tva.
+
+postgresql:
+  postgresqlDatabase: logdb
+  postgresqlUsername: kang
+  postgresqlPassword: manymoonsago
+  servicePort: 5432

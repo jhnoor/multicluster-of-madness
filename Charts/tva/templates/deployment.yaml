@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapi
+  labels:
+    app: log
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: webapi
+  template:
+    metadata:
+      labels:
+        app: log
+        service: webapi
+    spec:
+      imagePullSecrets:
+        - name: gh-jhnoor
+      containers:
+        - name: webapi
+          image: ghcr.io/jhnoor/multi-cluster-of-madness/tva:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE
+              value: "false"
+            - name: ASPNETCORE_URLS
+              value: http://+:80
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ConnectionStrings__DefaultConnection
+              value: Server={{ .Release.Name }}-postgresql-0;Port={{ .Values.postgresql.servicePort }};Database={{ .Values.postgresql.postgresqlDatabase }};User Id={{ .Values.postgresql.postgresqlUsername }};Password={{ .Values.postgresql.postgresqlPassword }}

@@ -1,6 +1,6 @@
 apiVersion: v2
 name: tva
-description: The Timeline Variance Authority (TVA) will prune the timeline according to the blue/green deployment strategy.
+description: The Time Variance Authority (TVA) will prune the timeline according to the blue/green deployment strategy.
 type: application
 version: 0.0.1
 appVersion: "0.0.1"

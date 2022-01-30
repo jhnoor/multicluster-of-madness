@@ -80,7 +80,7 @@ At random. Dispassionate, fair to rich and poor alike. They called me a mad man.
 TODO: Interpod communication with ssl keys
 
 ## tva
-The `TVA` (`Timeline Variance Authority`) is overseeing a split of the timeline, and must ensure that people are staying within their version of the timeline. The two timelines are called blue and green, and people within blue are referred to as blues, and greens are within green. The green timeline is being prepared and eventually all traffic will start to be routed to the green timeline, whilst the blue timeline will be pruned. 
+The `TVA` (`Time Variance Authority`) is overseeing a split of the timeline, and must ensure that people are staying within their version of the timeline. The two timelines are called blue and green, and people within blue are referred to as blues, and greens are within green. The green timeline is being prepared and eventually all traffic will start to be routed to the green timeline, whilst the blue timeline will be pruned. 
 
 Demonstrates:
 - Blue/Green deployment
