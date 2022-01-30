@@ -1,0 +1,19 @@
+
+   
+kind: Simple
+apiVersion: k3d.io/v1alpha3
+name: spider-men-cluster
+servers: 1
+agents: 3
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+
+options:
+  k3s:
+    nodeLabels:
+      - label: universe=spider-men
+        nodeFilters:
+          - agent:0
+          

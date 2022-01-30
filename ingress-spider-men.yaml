@@ -4,8 +4,8 @@ metadata:
   annotations:
     meta.helm.sh/release-name: spider-men
     meta.helm.sh/release-namespace: default
-  creationTimestamp: "2022-01-29T22:04:38Z"
-  generation: 2
+  creationTimestamp: "2022-01-30T09:39:16Z"
+  generation: 1
   labels:
     app.kubernetes.io/instance: spider-men
     app.kubernetes.io/managed-by: Helm
@@ -14,20 +14,18 @@ metadata:
     helm.sh/chart: spider-men-0.0.1
   name: spider-men
   namespace: default
-  resourceVersion: "9704"
-  uid: 843cca58-362e-4eb5-b736-b0eb8b37f012
+  resourceVersion: "949"
+  uid: 7d04b3e5-5aa4-4e6e-9435-70cc5e3465cd
 spec:
-  ingressClassName: spider-men
   rules:
-  - host: spider-men-ingress.local
-    http:
+  - http:
       paths:
       - backend:
           service:
             name: spider-men
             port:
               number: 80
-        path: /parker
+        path: /
         pathType: ImplementationSpecific
 status:
   loadBalancer: {}
