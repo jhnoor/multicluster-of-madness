@@ -15,4 +15,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 RUN apt update && apt install -y curl
 WORKDIR /app
 COPY --from=build-env /app/out .
+EXPOSE 80
 ENTRYPOINT ["dotnet", "LogApi.dll"]
