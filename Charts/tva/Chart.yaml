@@ -1,0 +1,12 @@
+apiVersion: v2
+name: tva
+description: The Timeline Variance Authority (TVA) will prune the timeline according to the blue/green deployment strategy.
+type: application
+version: 0.0.1
+appVersion: "0.0.1"
+
+
+dependencies:
+- name: postgresql
+  version: 10.16.2
+  repository: https://charts.bitnami.com/bitnami

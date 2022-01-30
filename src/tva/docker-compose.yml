@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  tva:
+    image: ghcr.io/jhnoor/multi-cluster-of-madness/tva:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8092:80
+    environment:
+      ASPNETCORE_URLS: http://+:80
+      ASPNETCORE_ENVIRONMENT: Development
+
