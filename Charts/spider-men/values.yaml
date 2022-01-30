@@ -4,7 +4,7 @@
 
 image:
   repository: ghcr.io/jhnoor/multi-cluster-of-madness/parker
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -22,7 +22,7 @@ serviceAccount:
 
 ingress:
   enabled: true
-  className: ""
+  className: "spider-men"
   annotations:
     # kubernetes.io/ingress.class: nginx
     # nginx.ingress.kubernetes.io/rewrite-target: /
@@ -30,14 +30,14 @@ ingress:
     - host: spider-men-ingress.local
       paths:
         - path: /
-          pathType: Prefix
+          pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
 
 resources:

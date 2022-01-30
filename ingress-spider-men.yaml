@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    meta.helm.sh/release-name: spider-men
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2022-01-29T22:04:38Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/instance: spider-men
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: spider-men
+    app.kubernetes.io/version: 0.0.1
+    helm.sh/chart: spider-men-0.0.1
+  name: spider-men
+  namespace: default
+  resourceVersion: "9704"
+  uid: 843cca58-362e-4eb5-b736-b0eb8b37f012
+spec:
+  ingressClassName: spider-men
+  rules:
+  - host: spider-men-ingress.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: spider-men
+            port:
+              number: 80
+        path: /parker
+        pathType: ImplementationSpecific
+status:
+  loadBalancer: {}

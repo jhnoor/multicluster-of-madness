@@ -22,8 +22,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "spider-men.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -37,11 +35,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 80
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 80
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
