@@ -37,7 +37,7 @@ spec:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
             - name: ConnectionStrings__DefaultConnection
-              value: Server={{ .Release.Name }}-postgresql-0;Port={{ .Values.postgresql.servicePort }};Database={{ .Values.postgresql.postgresqlDatabase }};User Id={{ .Values.postgresql.postgresqlUsername }};Password={{ .Values.postgresql.postgresqlPassword }}
+              value: Server={{ .Release.Name }}-postgresql;Port={{ .Values.postgresql.servicePort }};Database={{ .Values.postgresql.postgresqlDatabase }};User Id={{ .Values.postgresql.postgresqlUsername }};Password={{ .Values.postgresql.postgresqlPassword }}
           livenessProbe:
             httpGet:
               path: /
