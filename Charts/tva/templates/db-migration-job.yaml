@@ -6,11 +6,11 @@ metadata:
   labels:
     {{- include "tva.labels" . | nindent 4 }}
   annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    "helm.sh/hook": pre-install,pre-upgrade
+    # If stated as pre-install, the job does not run due to the db not existing
+    # However, we will want to run this pre-upgrade (as the db does exist)
+    "helm.sh/hook": pre-upgrade, post-install
     "helm.sh/hook-weight": "-5"
-    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   template:
     metadata:
@@ -28,4 +28,4 @@ spec:
         env:
           - name: ConnectionStrings__DefaultConnection
             value: Server={{ .Release.Name }}-postgresql;Port={{ .Values.postgresql.servicePort }};Database={{ .Values.postgresql.postgresqlDatabase }};User Id={{ .Values.postgresql.postgresqlUsername }};Password={{ .Values.postgresql.postgresqlPassword }}
-
+        command: ["/bin/bash", "-c", "/app/efbundle"]

@@ -13,7 +13,7 @@ RUN dotnet restore
 
 # Copy everything else and build
 COPY . .
-RUN dotnet publish -c Release -o out
+RUN dotnet publish --no-restore -c Release -o out
 
 # Creates an executable called efbundle 
 RUN dotnet ef migrations bundle --self-contained
@@ -28,5 +28,5 @@ ENTRYPOINT ["dotnet", "LogApi.dll"]
 
 FROM mcr.microsoft.com/dotnet/runtime:6.0 as db-migrator
 COPY --from=build-env /app/efbundle /app/
-ENTRYPOINT [ "/bin/bash", "-c", "./app/efbundle --verbose --connection \"${ConnectionStrings__KDVManagerChildManagementConnectionString}\" " ]
+ENTRYPOINT [ "/bin/bash", "-c", "/app/efbundle --verbose --connection \"${ConnectionStrings__DefaultConnection}\" " ]
 
