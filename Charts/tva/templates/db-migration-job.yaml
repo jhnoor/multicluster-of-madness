@@ -1,0 +1,31 @@
+# Helm job that migrates database
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "tva.fullname" . }}
+  labels:
+    {{- include "tva.labels" . | nindent 4 }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  template:
+    metadata:
+      labels:
+        {{- include "tva.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      restartPolicy: Never
+      containers:
+      - name: "{{ .Chart.Name }}-db-migrator-job"
+        image: "ghcr.io/jhnoor/multi-cluster-of-madness/tva-db-migrator:latest"
+        env:
+          - name: ConnectionStrings__DefaultConnection
+            value: Server={{ .Release.Name }}-postgresql;Port={{ .Values.postgresql.servicePort }};Database={{ .Values.postgresql.postgresqlDatabase }};User Id={{ .Values.postgresql.postgresqlUsername }};Password={{ .Values.postgresql.postgresqlPassword }}
+

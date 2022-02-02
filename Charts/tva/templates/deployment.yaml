@@ -36,6 +36,8 @@ spec:
               value: http://+:80
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
+            - name: Kestrel__Endpoints__Http__Url
+              value: http://+:80
             - name: ConnectionStrings__DefaultConnection
               value: Server={{ .Release.Name }}-postgresql;Port={{ .Values.postgresql.servicePort }};Database={{ .Values.postgresql.postgresqlDatabase }};User Id={{ .Values.postgresql.postgresqlUsername }};Password={{ .Values.postgresql.postgresqlPassword }}
           livenessProbe:

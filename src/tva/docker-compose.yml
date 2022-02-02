@@ -6,8 +6,15 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+      target: aspnet
     ports:
       - 8092:80
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-
+  
+  tva-db-migrator:
+    image: ghcr.io/jhnoor/multi-cluster-of-madness/tva-db-migrator:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: db-migrator
